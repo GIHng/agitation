@@ -37,8 +37,8 @@ jobs:
         run: |
           # Build and release Docker image here
           # Example:
-          docker build -t $REPO .
-          docker tag $REPO:latest $NAME/$REPO:latest
-          docker push $NAME/%REPO:latest
+          docker build -t $NAME/$REPO .
+          docker tag $NAME/$REPO:latest $NAME/$REPO:latest
+          docker push $NAME/$REPO:latest
 
 # You should set secrets for DOCKER_USERNAME and DOCKER_PASSWORD in your GitHub repository settings.
