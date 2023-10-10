@@ -34,7 +34,7 @@ jobs:
         env:
           NAME: stting2 # Set your application name
           REPO: agitaction # Set your Docker repository name
-        run: |
+        run:
           # Build and release Docker image here
           # Example:
           docker build -t $NAME/$REPO .
