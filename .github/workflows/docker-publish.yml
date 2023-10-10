@@ -14,18 +14,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: gitaction
-        uses: actions/checkout@v2 # Use the v2 version of the checkout action
 
       - name: Set Up Go
         uses: actions/setup-go@v2 # Use the v2 version of the setup-go action
         with:
-          go-version: 1.15 # Specify the Go version you want to use
+          go-version: 1.13 # Specify the Go version you want to use
 
       - name: Build
-        run: |
-          go build -v ./...
+        run: go build -v ./...
           # You can add additional build steps if needed
+          
       - name: Login To DockerHub
         uses: docker/login-action@v1
         with:
