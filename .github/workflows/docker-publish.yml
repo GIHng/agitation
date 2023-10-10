@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: gitaction
         uses: actions/checkout@v2 # Use the v2 version of the checkout action
 
       - name: Set Up Go
@@ -30,7 +30,7 @@ jobs:
       - name: Build and Release to DockerHub
         env:
           NAME: stting2 # Set your application name
-          REPO: gitaction # Set your Docker repository name
+          REPO: agitaction # Set your Docker repository name
         run: |
           # Build and release Docker image here
           # Example:
