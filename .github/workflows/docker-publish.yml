@@ -1,0 +1,41 @@
+name: GitAction
+
+# Define when this workflow should run
+on:
+  push:
+    branches:
+      - main # Trigger on pushes to the main branch
+  pull_request:
+    branches:
+      - main # Trigger on pull requests targeting the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2 # Use the v2 version of the checkout action
+
+      - name: Set Up Go
+        uses: actions/setup-go@v2 # Use the v2 version of the setup-go action
+        with:
+          go-version: 1.15 # Specify the Go version you want to use
+
+      - name: Build
+        run: |
+          go build -v ./...
+          # You can add additional build steps if needed
+
+      - name: Build and Release to DockerHub
+        env:
+          NAME: stting2 # Set your application name
+          REPO: gitaction # Set your Docker repository name
+        run: |
+          # Build and release Docker image here
+          # Example:
+          docker build -t $REPO .
+          docker tag $REPO:latest $NAME/$REPO:latest
+          docker push $NAME/%REPO:latest
+
+# You should set secrets for DOCKER_USERNAME and DOCKER_PASSWORD in your GitHub repository settings.
