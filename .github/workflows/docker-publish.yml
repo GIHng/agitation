@@ -22,6 +22,8 @@ jobs:
         go-version: 1.13
       
     - name: Build
+      # run: pip install -r requirements.txt
+      # Pyhton 
       run: go build -v ./...
 
     - name: Login To Dockerhub
